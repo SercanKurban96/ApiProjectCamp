@@ -46,3 +46,38 @@ API projemiz hazır. API projelerinde bir arayüz bulunmamaktadır. Uygulamayı 
 ![image](https://github.com/user-attachments/assets/046fd5c4-0b54-4b80-97f2-90a6f68b4846)
 
 API projesini çalıştırdığımız zaman karşımıza bu şekilde çıkacaktır.
+
+![image](https://github.com/user-attachments/assets/18bfeb24-1454-43c9-8a7d-2a8376283159)
+
+Projemizde başlangıç olarak bize Controller klasöründe yer alan WeatherForecastController ve en altta yer alan WeatherForecast.cs sınıfı yer almaktadır. Bu projeyi her şeyi kendimize uyarlayacağımız için bunların ikisini siliyoruz.
+
+![image](https://github.com/user-attachments/assets/01bc9744-80d7-4416-8604-14a11b33ff0c)
+
+Projeyi tekrar çalıştırdığımızda karşımıza bu şekilde çıkacaktır. Bu bir API test aracıdır. Swagger üzerinden API'lerimizi test ediyor olacağız.
+<br><br>
+## ⚙️ API Nedir?
+
+API (Application Programming Interface – Uygulama Programlama Arayüzü), farklı yazılımların birbiriyle iletişim kurmasını sağlayan bir ara yüzdür. API'ler, belirli işlevleri yerine getirmek için diğer yazılımlara veya sistemlere nasıl erişileceğini tanımlayan kurallar ve protokoller içerir.
+
+### 📌 API'nin Temel Çalışma Mantığı
+1. İstemci (Client): API'yi çağıran sistem veya uygulamadır.<br>
+2. İstek (Request): API’ye belirli bir işlem yapmasını söyleyen komuttur.<br>
+3. Sunucu (Server): API isteğini işler ve yanıtı döndürür.<br>
+4. Yanıt (Response): Sunucudan dönen sonuçtur.<br>
+
+### 📌 API Türleri
+📍 <strong>REST API:</strong> HTTP protokolünü kullanarak çalışan, en yaygın API türüdür.<br>
+📍 <strong>SOAP API:</strong> XML tabanlı daha ağır bir API standardıdır.<br>
+📍 <strong>GraphQL API:</strong> Tek bir istekte yalnızca ihtiyaç duyulan verileri çekmeye odaklanan API modelidir.<br>
+📍 <strong>WebSocket API:</strong> Gerçek zamanlı veri akışı sağlayan bir API türüdür.<br>
+
+### 📌 API Kullanım Alanları
+✅Web siteleri ve mobil uygulamalar arası veri paylaşımı<br>
+✅Üçüncü taraf entegrasyonları (örneğin: ödeme sistemleri, harita servisleri)<br>
+✅IoT (Nesnelerin İnterneti) cihazları ile veri alışverişi<br>
+✅Bulut servisleriyle entegrasyon<br>
+
+Özetle, API’ler farklı sistemlerin uyumlu şekilde çalışmasını sağlayan bir köprü görevi görür.
+
+Tekrardan katmanımıza gelerek Entities isminde bir tane klasör oluşturuyoruz.
+
