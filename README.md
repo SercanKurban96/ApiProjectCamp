@@ -1,4 +1,4 @@
-#  API EĞİTİM KAMPI
+#  API PROJE KAMPI
 👋 Merhabalar, oluşturmuş olduğum bu repo, Murat Yücedağ hocamızın YouTube üzerinden hazırlamış olduğu API Proje Kampı süresince tamamlamış olduğum projeleri içermektedir. Bu eğitimde sıfırdan API anlatılmaktadır.
 <hr>
 
@@ -141,3 +141,53 @@ Kategorilerin bir Product ile ilişkili olması gerekmektedir. Şimdilik bu adı
 ![image](https://github.com/user-attachments/assets/85efca6c-f379-4e33-ab79-66baaf3d687f)
 
 ✅ Reservation alanı için gerekli entitylerimizi hazırladık.
+
+## 🖥️ #4 Api Proje Kampı - Entitylerin Tamamlanması ve Paketlerin Kurulması
+### 📆 Tarih: 5 Şubat 2025
+<br>
+
+Entityleri oluşturmaya devam ediyoruz.
+
+![image](https://github.com/user-attachments/assets/b62c72d6-e5c1-4880-be14-9d0f03598e44)
+
+📌 <strong>Sekizinci Entity:</strong> Burada galeri işlemlerini yapacağız. İsmini Image olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/af48267f-5e26-4d2c-95cc-9b2366082adf)
+
+✅ Image alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/64aee2ca-76b3-4660-9696-0c05cbdd7f9a)
+
+📌 <strong>Dokuzuncu Entity:</strong> Burada haritayı ve diğer adres bilgilerinin tamamını tek bir entity üzerinden yapıyoruz. İsmini Contact olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/f5c3c92b-955e-4e2d-93bb-ab4465a4a71c)
+
+✅ Contact alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/8ec2e9c9-a46c-41c1-bd66-e956007ca4a0)
+
+📌 <strong>Onuncu Entity:</strong> Burada bir mesaj kısmı bulunmaktadır. İsmini Message olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/4e685b0f-09d6-420b-ad95-3da42f898906)
+
+✅ Message alanı için gerekli entitylerimizi hazırladık.
+
+Entityleri yazdıktan sonra katmanımıza sağ tıklayıp "Manage NuGet Packages diyoruz.
+
+![image](https://github.com/user-attachments/assets/2402b954-a423-4c12-9c19-a47cee44234c)
+
+Sol üst köşede yer alan Browse kısmına tıklayıp arama çubuğuna entityframework core yazıyoruz. Kurmamız gereken paketler şunlardır;
+
+📍<strong>Microsoft.EntityFrameworkCore</strong><br>
+📍<strong>Microsoft.EntityFrameworkCore.Design</strong><br>
+📍<strong>Microsoft.EntityFrameworkCore.SqlServer</strong><br>
+📍<strong>Microsoft.EntityFrameworkCore.Tools</strong><br>
+
+![image](https://github.com/user-attachments/assets/75a713ce-4a8d-42d8-871f-2e7d87c1dc4f)
+
+Bu paketleri kurarken seçeceğimiz sürüm, ASP.NET Core 6.0 ile çalıştığımız için 6.0'a ait sürümü seçmemiz gerekecektir. Burada en son sürüm hangisiyse onu seçiyoruz ve Install diyoruz.
+
+![image](https://github.com/user-attachments/assets/a2739e5d-c0a3-400e-b488-9e917bb11090)
+
+Paketlerimiz yüklenmiştir. Dependencies kısmından Packages olana tıkladığımızda burada kurulan paketleri görebiliriz.
+
