@@ -238,3 +238,76 @@ Done yazısı çıkarsa migration işlemi tamamlanmış demektir. Veri tabanım�
 ![image](https://github.com/user-attachments/assets/0572bab7-9d4b-4f62-a120-90aa3575c2c1)
 
 Veri tabanımız ve tablolar oluşturuldu.
+
+
+## 🖥️ #6 Api Proje Kampı - Swagger Aracı, DI ve Kategori Ekleme İşlemi
+### 📆 Tarih: 10 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/22b53870-9081-42b7-93bb-a703adc2cfbd)
+
+Burada artık Controller kısmını oluşturabiliriz. Burada API'lerimizin testini gerçekleştirebilmek için Controller oluşturup bu Controller'dan gitmemiz gerekmektedir. Controllers klasörüne sağ tıklayıp Add kısmından Controller diyoruz.
+
+![image](https://github.com/user-attachments/assets/d640b467-4da8-4b4c-b899-834a8d873499)
+
+Sol tarafta yer alan API olanı seçiyoruz ve en üstte yer alan API Controller - Empty olanı seçip Add diyoruz.
+
+![image](https://github.com/user-attachments/assets/2bb7b64c-303f-4d17-b540-1c92c02116b1)
+
+Burada ismini CategoriesController olarak belirliyoruz. Genellikle API'lerde Controller oluştururken çoğul isimler kullanılır. Biz de burada çoğul isim kullanarak Categories şeklinde ismini vermiş olduk.
+
+![image](https://github.com/user-attachments/assets/f36f684e-69bb-4ef3-8919-a39d03480ee0)
+
+CategoriesController API bu şekilde karşımıza çıkmaktadır. API dediğimiz aracın burada bir arayüzü yoktur. Sadece bunları test edebileceğimiz Swagger isminde bir tool gelmektedir. Bu tool üzerinden testimizi gerçekleştirebiliriz. Burada her bir API'ın türünün ne olduğunu belirtmemiz gerekmektedir. Ekleme, silme, güncelleme, listeleme veya herhangi bir işlem için burada bütün API'lerin mutlaka türünün belirtmesi gerekmektedir. Aksi halde hata verecektir.
+
+Context sınıfımızda yer alan ApiContext işlemi için, burada Dependency Injection'ı biraz daha uygulayıp sürdürülebilir kod yazabilmek adına API Context'ten bir nesne örneği türetmek yerine bunu private readonly üzerinden API Context'ten bir nesne örneği türetip sonrasında Constructor (yapıcı metot) olarak yapacağız.
+
+![image](https://github.com/user-attachments/assets/321d594f-e045-4fe4-b2af-c7ad633a32e5)
+
+Buradan private readonly üzerinden bir nesne örneği türettik ve ardından bir tane Constructor oluşturduk.
+
+### !!! Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
+
+![image](https://github.com/user-attachments/assets/e2c7bc88-ad34-4e48-a48f-4a31fda99c3c)
+
+7. satırda yazacağımız kod bu şekilde olacaktır. ApiContext sınıfını constructor olarak kullandığını belirtiyoruz ve bunu Program.cs üzerinden bildirmiş oluyoruz.
+
+Tekrardan CategoriesController'a dönüyoruz.
+
+Burada ilk olarak yeni bir kategori ekleme işlemini gerçekleştiriyoruz.
+
+![image](https://github.com/user-attachments/assets/fea799c0-b4a1-4cbf-a95b-5a14dc5c7d9a)
+
+📍<strong>[HttpPost]:</strong> Ekleme işlemleri için kullanılan bir özelliktir.
+
+📍 Burada public IActionResult dedikten sonra bir metot ismi belirliyoruz ve ismini CreateCategory olarak belirliyoruz. Parantez içerisine bizden bir parametre beklemektedir. Category türünden bir category parametresi oluşturuyoruz.<br>
+📍 Ardından yapacağımız işlem, _context.Categories.Add dedikten sonra parametreden gelen değeri Categories sınıfına ekleme işlemini yapıyoruz. Bu sınıf bizim SQL'e yansıtmış olduğumuz sınıftan gelmektedir.<br>
+📍 Ardından _context.SaveChanges kısmı değişiklikleri kaydetmeyi sağlar.<br>
+📍 En sonunda return Ok diyerek bize bir mesaj vermesini sağlıyoruz.<br>
+📍 Programımızı çalıştırmak için CTRL + F5 yapıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/3bcf3c82-e535-4a19-8b06-16aad552bc3c)
+
+Burada bir POST işlemi oluştu. Üzerine tıklıyoruz.
+
+![image](https://github.com/user-attachments/assets/7d5ea85e-1f2c-43c9-9234-229c135c3052)
+
+Sağ tarafta yer alan "Try it out" butonuna basıyoruz.
+
+![image](https://github.com/user-attachments/assets/e4f7d2eb-c895-4e22-983d-9c7f76d19932)
+
+Burada gelen bir data var. Request body istek yapılar için burada bize application/json türünden vermektedir. Burada gelen kod bloğu süslü parantezin içindeki kod bloğu json türündedir. Kategori eklemesi yaparken ID değerini girmiyoruz. Bu nedenle ID kısmını silebiliriz. Kategori adını giriyoruz.
+
+![image](https://github.com/user-attachments/assets/007bcd06-172b-43ff-85b0-3f1aca3e34e9)
+
+Örnek olarak kategorinin ismini Çorbalar olarak belirledik. Çalıştırmak için aşağıda bulunan Execute butonuna basıyoruz.
+
+![image](https://github.com/user-attachments/assets/4932d228-0206-400f-9b55-2ead6e5ac6d7)
+
+Execute dedikten sonra biraz aşağıya iniyoruz. Bizim yazmış olduğumuz mesaj karşımıza çıkmış oldu.
+
+Birkaç tane veri girişi yaptıktan sonra SQL'e dönüyoruz ve verilerimiz veri tabana yansımış mı kontrol ediyoruz.
+
+![image](https://github.com/user-attachments/assets/b49295bd-e309-4bb1-8c60-ae5d999cecd9)
+
+Kategorilerimiz SQL veri tabanına yansımış oldu.
