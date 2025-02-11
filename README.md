@@ -81,3 +81,63 @@ API (Application Programming Interface – Uygulama Programlama Arayüzü), fark
 
 Tekrardan katmanımıza gelerek Entities isminde bir tane klasör oluşturuyoruz.
 
+## 🖥️ #3 Api Proje Kampı - Entitylerin Oluşturulması
+### 📆 Tarih: 3 Şubat 2025
+<br>
+
+Hazır şablonda yer alan tüm öğeleri dinamik hale getirecek şekilde entitylerimizi oluşturuyoruz. Burada Code First yaklaşımını kullanıyoruz.
+
+![image](https://github.com/user-attachments/assets/4d63fe90-2a8c-4c61-a713-caeada160847)
+
+📌 <strong>Birinci Entity:</strong> Dinamik olarak gelen Feature alanı olacaktır. Öne çıkan kısım gibi düşünebilirsiniz.
+
+Entities klasörüne sağ tıklayıp Add kısmından Class seçiyoruz ve ismini Feature olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/6775f582-ec4f-49eb-a0ca-3a09bc9d5f12)
+
+✅ Feature alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/961aedd0-c414-4e23-bbe0-35c81c9c617e)
+
+Bundan bir önceki kısım olan About bölümünü en sona bırakacağız.
+
+📌 <strong>İkinci Entity:</strong> Burası Hizmetlerimiz kısmı olacaktır. İsmini Service olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/3a0e604a-5101-46d7-921a-74795275e8f6)
+
+✅ Service alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/51faefdf-f806-44ae-a648-1adcaf31f262)
+
+📌 <strong>Üçüncü ve Dördüncü Entity:</strong> Burada iki tane entity kullanacağız. İsimlerini Product ve Category olarak belirliyoruz. Category dediğimiz temada yer alan Starters, Breakfast kısmı olacaktır.
+Kategorilerin bir Product ile ilişkili olması gerekmektedir. Şimdilik bu adımı atlıyoruz.
+
+![image](https://github.com/user-attachments/assets/92d38bf1-822d-4007-994c-759fed39cf96)
+
+![image](https://github.com/user-attachments/assets/e640b87f-40f2-4012-b1fb-1b4600a1bfb6)
+
+✅ Category ve Product alanları için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/df13963e-9351-4ae1-b3a7-476cd1f7959c)
+
+📌 <strong>Beşinci Entity:</strong> Burası müşterilere ait yorumlar kısmı olacaktır. İsmini Testimonial olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/6a6fee4a-c680-47cb-8359-81e896ade7d8)
+
+✅ Testimonial alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/80f93b54-4501-448c-935f-8fc953876d99)
+
+📌 <strong>Altıncı Entity:</strong> Burada şefler yer almaktadır. İsmini Chef olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/ebc34847-03d1-4a78-9aad-7ebec88c02b0)
+
+✅ Chef alanı için gerekli entitylerimizi hazırladık.
+
+![image](https://github.com/user-attachments/assets/739b4ef4-ee25-49f3-874a-c808c18bb07a)
+
+📌 <strong>Yedinci Entity:</strong> Burada rezervasyon işlemlerini yapacağız. İsmini Reservation olarak belirliyoruz.
+
+![image](https://github.com/user-attachments/assets/85efca6c-f379-4e33-ab79-66baaf3d687f)
+
+✅ Reservation alanı için gerekli entitylerimizi hazırladık.
