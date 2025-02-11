@@ -191,3 +191,50 @@ Bu paketleri kurarken seçeceğimiz sürüm, ASP.NET Core 6.0 ile çalıştığ�
 
 Paketlerimiz yüklenmiştir. Dependencies kısmından Packages olana tıkladığımızda burada kurulan paketleri görebiliriz.
 
+## 🖥️ #5 Api Proje Kampı - Migration İşlemleri
+### 📆 Tarih: 5 Şubat 2025
+<br>
+
+Migration işlemleri için bizim bir Context sınıfına ihtiyacımız olacaktır. Bunun için katmanımıza Context isminde bir tane klasör oluşturuyoruz. Ardından Context klasörüne sağ tıklayıp yeni bir Class oluşturuyoruz. Class'ımızın ismini "ApiContext" olarak belirledik.
+
+Burada Server kısmı sizin SQL adresiniz, initial catalog kısmı veri tabana vereceğiniz isim, integrated security kısmı ise bağlantının güvenli olduğunu, herhangi bir kullanıcı adı şifre kullanmadan erişim sağladığımızı bildirir.
+
+Burada Code First aracılığıyla veri tabanı bağlantısını gerçekleştireceğiz.
+
+![image](https://github.com/user-attachments/assets/b41d04f5-3278-4226-9a77-c22523953613)
+
+Burada ilk olarak DbContext sınıfından miras alıyoruz. Ardından kısayol olarak override onconfiguring yazdığımız zaman gelen metni seçiyoruz. Ardından optionsbuilder.UseSqlServer kodunu yazdıktan sonra ilgili veri tabanı adresini yazıyoruz.
+
+Buradaki işlemler tamamlandıktan sonra bu kez veri tabanına yansıtacağımız tabloların isimlerini oluşturacağız. DbSet türünde burada bütün entityleri tek tek yazıyoruz.
+
+![image](https://github.com/user-attachments/assets/bdf89c7d-3c59-442a-8c71-bcc91c8121e8)
+
+Burada yer alan bütün entityleri DbSet türünden yazdık. DbSet içerisine yazdığımız entityler yaln isim C#'taki sınıfın ismini, sağ taraftaki çoğul isim SQL'e yansıyacak olan tablonun ismidir.
+
+Migration işlemlerini yapabilmek için bu kez Package Manager Console açmamız gerekecektir. Birkaç yöntemle konsol açılabilir. Visual Studio'nun sol üst kısmında yer alan View kısmına gelinir, ardından Other Windows'a gelinir ve oradan Package Manager Console seçilir. Diğer bir yöntem üst kısımda yer alan Tools kısmına gelinir, ardından NuGet Package Manager, ardından Package Manager Console seçtiğiniz zaman konsol açılacaktır.
+
+![image](https://github.com/user-attachments/assets/bb9b787d-37d6-4180-985a-1ebdf70441c4)
+
+Package Manager Console bu şekilde çıkacaktır. Başlangıçta sizde yazılar gelecektir, bunları silmek için Default Project: ApiProjectCamp.WebApi yazılan yerin sağ tarafındaki ikona tıkladığınız zaman ekranı temizleyecektir.
+
+Migration kelime anlamı göç demektir. Burada aslında Visual Studio'dan SQL'e bir göç, bir taşıma işlemi vardır. Yazacağımız kod şu şekildedir;
+
+![image](https://github.com/user-attachments/assets/0f8b3abd-5e19-4776-9a27-f17798083477)
+
+Burada add-migration dedikten sonra istediğiniz bir isim verebilirsiniz. Burada mig1 olarak belirlememizin sebebi migrationların sıralamasını unutmamak için hiyerarşik yapıyı korumak adına bu şekilde adlandırıyoruz. Ardından Enter'a basıyoruz ve biraz bekliyoruz.
+
+![image](https://github.com/user-attachments/assets/b0749e56-a32f-4896-99bd-553afa752d52)
+
+Migration işleminde herhangi bir sıkıntı çıkmadıysa karşımıza bu şekilde çıkacaktır. Burası bir önizleme ekranıdır. Veri tabanına yansıtmak için yazacağımız kod şu şekildedir;
+
+![image](https://github.com/user-attachments/assets/1eefa0fc-eb98-4aba-9a59-3b9ee70e727c)
+
+update-database dedikten sonra biraz bekliyoruz.
+
+![image](https://github.com/user-attachments/assets/a36a08a5-ef78-45f7-8bca-e3c70605547c)
+
+Done yazısı çıkarsa migration işlemi tamamlanmış demektir. Veri tabanımıza gidiyoruz.
+
+![image](https://github.com/user-attachments/assets/0572bab7-9d4b-4f62-a120-90aa3575c2c1)
+
+Veri tabanımız ve tablolar oluşturuldu.
