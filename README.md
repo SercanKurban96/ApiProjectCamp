@@ -433,3 +433,19 @@ Burada önce ID değerini yazıyoruz. Ardından güncelleyeceğimiz değerin ism
 ![image](https://github.com/user-attachments/assets/3405e742-db69-458c-b664-acd24000539a)
 
 Gördüğünüz gibi 1 numaralı olan kategorinin ismi aaaa olarak belirlenmiş oldu.
+
+## 🖥️ #8 Api Proje Kampı - Chef Api İşlemleri
+### 📆 Tarih: 10 Şubat 2025
+<br>
+
+Bu kez Şefler üzerinden API CRUD işlemlerimizi yapıyoruz. Oluşturacağımız Controller ismi ChefsController olacaktır.
+
+![image](https://github.com/user-attachments/assets/cc505209-9c13-4c1e-bad4-c411fb4eb9aa)
+
+![image](https://github.com/user-attachments/assets/bdbb3c48-abe5-45b9-9ab5-f5ed1acfdafc)
+
+Bir önceki CategoriesController'da yer alan CRUD işlemlerinin aynısını bu kez ChefsController için oluşturduk.
+
+![image](https://github.com/user-attachments/assets/7e515f4d-d818-4dfd-991e-5b26cdcc90cc)
+
+Artık iki tane alanımız oldu. Şefler üzerinden CRUD işlemlerimizi yapabiliriz.
