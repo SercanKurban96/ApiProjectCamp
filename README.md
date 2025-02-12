@@ -238,3 +238,198 @@ Done yazısı çıkarsa migration işlemi tamamlanmış demektir. Veri tabanım�
 ![image](https://github.com/user-attachments/assets/0572bab7-9d4b-4f62-a120-90aa3575c2c1)
 
 Veri tabanımız ve tablolar oluşturuldu.
+
+
+## 🖥️ #6 Api Proje Kampı - Swagger Aracı, DI ve Kategori Ekleme İşlemi
+### 📆 Tarih: 10 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/22b53870-9081-42b7-93bb-a703adc2cfbd)
+
+Burada artık Controller kısmını oluşturabiliriz. Burada API'lerimizin testini gerçekleştirebilmek için Controller oluşturup bu Controller'dan gitmemiz gerekmektedir. Controllers klasörüne sağ tıklayıp Add kısmından Controller diyoruz.
+
+![image](https://github.com/user-attachments/assets/d640b467-4da8-4b4c-b899-834a8d873499)
+
+Sol tarafta yer alan API olanı seçiyoruz ve en üstte yer alan API Controller - Empty olanı seçip Add diyoruz.
+
+![image](https://github.com/user-attachments/assets/2bb7b64c-303f-4d17-b540-1c92c02116b1)
+
+Burada ismini CategoriesController olarak belirliyoruz. Genellikle API'lerde Controller oluştururken çoğul isimler kullanılır. Biz de burada çoğul isim kullanarak Categories şeklinde ismini vermiş olduk.
+
+![image](https://github.com/user-attachments/assets/f36f684e-69bb-4ef3-8919-a39d03480ee0)
+
+CategoriesController API bu şekilde karşımıza çıkmaktadır. API dediğimiz aracın burada bir arayüzü yoktur. Sadece bunları test edebileceğimiz Swagger isminde bir tool gelmektedir. Bu tool üzerinden testimizi gerçekleştirebiliriz. Burada her bir API'ın türünün ne olduğunu belirtmemiz gerekmektedir. Ekleme, silme, güncelleme, listeleme veya herhangi bir işlem için burada bütün API'lerin mutlaka türünün belirtmesi gerekmektedir. Aksi halde hata verecektir.
+
+Context sınıfımızda yer alan ApiContext işlemi için, burada Dependency Injection'ı biraz daha uygulayıp sürdürülebilir kod yazabilmek adına API Context'ten bir nesne örneği türetmek yerine bunu private readonly üzerinden API Context'ten bir nesne örneği türetip sonrasında Constructor (yapıcı metot) olarak yapacağız.
+
+![image](https://github.com/user-attachments/assets/321d594f-e045-4fe4-b2af-c7ad633a32e5)
+
+Buradan private readonly üzerinden bir nesne örneği türettik ve ardından bir tane Constructor oluşturduk.
+
+### !!! Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
+
+![image](https://github.com/user-attachments/assets/e2c7bc88-ad34-4e48-a48f-4a31fda99c3c)
+
+7. satırda yazacağımız kod bu şekilde olacaktır. ApiContext sınıfını constructor olarak kullandığını belirtiyoruz ve bunu Program.cs üzerinden bildirmiş oluyoruz.
+
+Tekrardan CategoriesController'a dönüyoruz.
+
+Burada ilk olarak yeni bir kategori ekleme işlemini gerçekleştiriyoruz.
+
+![image](https://github.com/user-attachments/assets/fea799c0-b4a1-4cbf-a95b-5a14dc5c7d9a)
+
+📍<strong>[HttpPost]:</strong> Ekleme işlemleri için kullanılan bir özelliktir.
+
+📍 Burada public IActionResult dedikten sonra bir metot ismi belirliyoruz ve ismini CreateCategory olarak belirliyoruz. Parantez içerisine bizden bir parametre beklemektedir. Category türünden bir category parametresi oluşturuyoruz.<br>
+📍 Ardından yapacağımız işlem, _context.Categories.Add dedikten sonra parametreden gelen değeri Categories sınıfına ekleme işlemini yapıyoruz. Bu sınıf bizim SQL'e yansıtmış olduğumuz sınıftan gelmektedir.<br>
+📍 Ardından _context.SaveChanges kısmı değişiklikleri kaydetmeyi sağlar.<br>
+📍 En sonunda return Ok diyerek bize bir mesaj vermesini sağlıyoruz.<br>
+📍 Programımızı çalıştırmak için CTRL + F5 yapıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/3bcf3c82-e535-4a19-8b06-16aad552bc3c)
+
+Burada bir POST işlemi oluştu. Üzerine tıklıyoruz.
+
+![image](https://github.com/user-attachments/assets/7d5ea85e-1f2c-43c9-9234-229c135c3052)
+
+Sağ tarafta yer alan "Try it out" butonuna basıyoruz.
+
+![image](https://github.com/user-attachments/assets/e4f7d2eb-c895-4e22-983d-9c7f76d19932)
+
+Burada gelen bir data var. Request body istek yapılar için burada bize application/json türünden vermektedir. Burada gelen kod bloğu süslü parantezin içindeki kod bloğu json türündedir. Kategori eklemesi yaparken ID değerini girmiyoruz. Bu nedenle ID kısmını silebiliriz. Kategori adını giriyoruz.
+
+![image](https://github.com/user-attachments/assets/007bcd06-172b-43ff-85b0-3f1aca3e34e9)
+
+Örnek olarak kategorinin ismini Çorbalar olarak belirledik. Çalıştırmak için aşağıda bulunan Execute butonuna basıyoruz.
+
+![image](https://github.com/user-attachments/assets/4932d228-0206-400f-9b55-2ead6e5ac6d7)
+
+Execute dedikten sonra biraz aşağıya iniyoruz. Bizim yazmış olduğumuz mesaj karşımıza çıkmış oldu.
+
+Birkaç tane veri girişi yaptıktan sonra SQL'e dönüyoruz ve verilerimiz veri tabana yansımış mı kontrol ediyoruz.
+
+![image](https://github.com/user-attachments/assets/b49295bd-e309-4bb1-8c60-ae5d999cecd9)
+
+Kategorilerimiz SQL veri tabanına yansımış oldu.
+
+## 🖥️ #7 Api Proje Kampı - Kategori Api İşlemlerinin Tamamlanması
+### 📆 Tarih: 10 Şubat 2025
+<br>
+
+Kategoriye ait geri kalan tüm CRUD işlemlerini tamamlıyoruz. Bunun için ilk olarak listeleme işlemiyle başlayacağız.
+
+![image](https://github.com/user-attachments/assets/c42a4028-2c74-4647-9789-19789106aef0)
+
+Listeleme işlemi için herhangi bir attribute (özellik) kullanmadık. Programımızı çalıştırıyoruz.
+
+![image](https://github.com/user-attachments/assets/a89957cc-60d5-4837-b3d0-52412382591c)
+
+Çalıştırdığımız zaman bize 500 kodlu bir hata karşımıza çıkacaktır. Bu hatanın sebebi herhangi bir metodun başına o metodun attribute türü yazılmazsa hata döndürecektir. Bu nedenle metodun üst kısmına [HttpGet] özelliğini ekliyoruz.
+
+![image](https://github.com/user-attachments/assets/cc5380b9-8c74-4f08-b3fc-22b5544a8d5a)
+
+HttpGet özelliğini ekledik. Programımızı şimdi çalıştırabiliriz.
+
+![image](https://github.com/user-attachments/assets/c0a9bc52-f975-4332-8bed-4b3132afd051)
+
+GET özelliği karşımıza çıktı. Buraya tıklıyoruz. Bir önceki POST işlemde yaptığımız gibi önce Try it out, ardından Execute diyoruz.
+
+![image](https://github.com/user-attachments/assets/e7c29807-721a-468d-867d-8fa843ba927f)
+
+Burada veriler JSON formatında gelmektedir. Sağ tarafta Download kısmına tıklayarak verileri JSON formatında indirebilirsiniz. Sol tarafta yer alan 200 kodu, HTTP durum kodları içerisinde başarılı olduğunu bildirmektedir.
+
+## ![website_6156496](https://github.com/user-attachments/assets/e8bcd0f5-804b-4fbf-b847-1f5e6abd6f3b) HTTP Durum Kodları
+HTTP durum kodları, istemci (tarayıcı) ile sunucu arasındaki iletişimin sonucunu belirten üç haneli sayılardır. Bu kodlar 5 ana kategoriye ayrılır:
+
+### ℹ️ 1xx - Bilgilendirici Yanıtlar
+📌 100 Continue → Devam et, işlem sürdürülmeli.<br>
+📌 101 Switching Protocols → Protokol değişimi yapılıyor.<br>
+📌 103 Early Hints → Önbellekleme için erken ipuçları veriliyor.<br>
+
+### ✅ 2xx - Başarılı Yanıtlar
+📌 200 OK → İstek başarıyla tamamlandı.<br>
+📌 201 Created → Yeni bir kaynak oluşturuldu.<br>
+📌 202 Accepted → İstek kabul edildi ancak henüz işlenmedi.<br>
+📌 204 No Content → Başarıyla işlendi, ama içerik yok.<br>
+
+### ⚠️ 3xx - Yönlendirme Yanıtları
+📌 301 Moved Permanently → Kaynak kalıcı olarak taşındı.<br>
+📌 302 Found → Kaynak geçici olarak taşındı.<br>
+📌 304 Not Modified → İçerik değişmemiş, önbellek kullanılabilir.<br>
+📌 307 Temporary Redirect → Geçici yönlendirme, HTTP metodunu korur.<br>
+📌 308 Permanent Redirect → Kalıcı yönlendirme, HTTP metodunu korur.<br>
+
+### ❌ 4xx - İstemci Hata Yanıtları
+📌 400 Bad Request → Geçersiz istek.<br>
+📌 401 Unauthorized → Kimlik doğrulama gerekli.<br>
+📌 403 Forbidden → Erişim yasak.<br>
+📌 404 Not Found → Kaynak bulunamadı.<br>
+📌 405 Method Not Allowed → Kullanılan HTTP metodu desteklenmiyor.<br>
+📌 408 Request Timeout → İstek zaman aşımına uğradı.<br>
+📌 429 Too Many Requests → Çok fazla istek gönderildi, sınır aşıldı.<br>
+
+### ‼️ 5xx - Sunucu Hata Yanıtları
+📌 500 Internal Server Error → Sunucu tarafında bilinmeyen hata.<br>
+📌 502 Bad Gateway → Geçersiz ara sunucu (proxy) yanıtı.<br>
+📌 503 Service Unavailable → Sunucu geçici olarak kullanılamıyor.<br>
+📌 504 Gateway Timeout → Sunucu, diğer sunucudan yanıt alamadı.<br>
+
+Silme işlemi için kullanacağımız attribute [HttpDelete] olacaktır.
+
+![image](https://github.com/user-attachments/assets/41f6129a-d3ac-4bb8-877f-cf4714b79d93)
+
+HttpDelete özelliğini kullandıktan sonra DeleteCategory isminde bir metot oluşturuyoruz ve içerisinde int türünden id değerini alıyoruz.<br>
+Ardından var türünden value isminde bir değişken oluşturup id değerini bulmak için Find metodunu kullanıyoruz.<br>
+Bulduğumuz bu id değerini silmek için Remove metodunu kullanıyoruz ve değişiklikleri kaydediyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/8470eca4-a635-4d9e-aa0d-9cdb3bf7930b)
+
+DELETE özelliği karşımıza bu şekilde çıkacaktır. Buraya gelip silmek istediğimiz id değerini giriyoruz.
+
+![image](https://github.com/user-attachments/assets/594f0ee9-91c0-4a78-83e8-f674869486e3)
+
+Buradan 4 numaralı id değerini giriyoruz ve Execute diyoruz. Silme işleminde herhangi bir sorun yoksa 200 kodu dönderecektir. Peki id değeri olmayan bir değer silmeye çalışalım.
+
+![image](https://github.com/user-attachments/assets/42de0178-a33f-4150-bdca-3ada0543521b)
+
+Değeri 55 girdiğimiz zaman bu kez 500 hata kodunu dönderecektir.
+
+ID getirme işlemini yapıyoruz. Bunun için [HttpGet] özelliğini kullanıyoruz.
+
+![image](https://github.com/user-attachments/assets/ec7dd53b-0885-42b3-ab13-803543f532c3)
+
+Kodları yazdıktan sonra çalıştırmayı deneyelim.
+
+![image](https://github.com/user-attachments/assets/5981121e-71ba-4f56-a803-323155ac2cdf)
+
+Programı çalıştırdığımız zaman karşımıza bu şekilde bir hata gelecektir. Bu hatanın sebebi; bir Controller içerisinde aynı attribute türündeki metotlar birden fazla kez kullanılamaz. Daha önce listeleme işlemi için HttpGet kullanmıştık. Bu yüzden bir daha bu metodu bu şekilde kullanamıyoruz. Bu hatanın önüne geçebilmek için yazacağımız kod şu şekildedir;
+
+![image](https://github.com/user-attachments/assets/34145b31-5e91-41c6-9957-ffc4eeb403cd)
+
+HttpGet dedikten sonra bir parantez açıp çift tırnak içerisine oluşturduğumuz GetCategory ismindeki metodun aynısını yazıyoruz.
+
+![image](https://github.com/user-attachments/assets/65aed652-ac2d-4dfa-9c79-b267654b37e6)
+
+Programı çalıştırdığımız zaman gördüğünüz gibi en altta GET türünde bir özellik çıksa da Categories kısmın sonunda GetCategory yer almaktadır. Buraya girip getireceğimiz id değerini giriyoruz.
+
+![image](https://github.com/user-attachments/assets/ebd72ae2-00ee-4896-b83a-2be3044cd59c)
+
+ID değerini 2 girdiğimiz zaman "Tatlılar" ismindeki kategoriyi ekrana getirmektedir.
+
+Güncelleme işlemi için kullanacağımız özellik [HttpPut] olacaktır.
+
+![image](https://github.com/user-attachments/assets/08b9a17c-be87-42f2-bb38-3703600fe6ef)
+
+Güncelleme işlemi için kodlar bu şekildedir. Ekleme metodundaki kodlar ile aynıdır ancak buradaki tek fark, Add yerine Update metodunu kullanıyoruz.
+
+![image](https://github.com/user-attachments/assets/1ffa0d4d-4bcd-4722-98fa-c646292d1992)
+
+Artık PUT işlemi de gelmektedir. Güncellemek istediğimiz değeri girelim.
+
+![image](https://github.com/user-attachments/assets/5939e9f9-d9b2-454d-8e62-c46b6395b2e2)
+
+Burada önce ID değerini yazıyoruz. Ardından güncelleyeceğimiz değerin ismini yazıyoruz. Örneğin id değeri 1 olan kategorinin ismi "Çorbalar" iken burayı "aaaa" olarak değiştirdik. SQL tablomuza gidelim.
+
+![image](https://github.com/user-attachments/assets/3405e742-db69-458c-b664-acd24000539a)
+
+Gördüğünüz gibi 1 numaralı olan kategorinin ismi aaaa olarak belirlenmiş oldu.
