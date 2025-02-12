@@ -311,3 +311,125 @@ Birkaç tane veri girişi yaptıktan sonra SQL'e dönüyoruz ve verilerimiz veri
 ![image](https://github.com/user-attachments/assets/b49295bd-e309-4bb1-8c60-ae5d999cecd9)
 
 Kategorilerimiz SQL veri tabanına yansımış oldu.
+
+## 🖥️ #7 Api Proje Kampı - Kategori Api İşlemlerinin Tamamlanması
+### 📆 Tarih: 10 Şubat 2025
+<br>
+
+Kategoriye ait geri kalan tüm CRUD işlemlerini tamamlıyoruz. Bunun için ilk olarak listeleme işlemiyle başlayacağız.
+
+![image](https://github.com/user-attachments/assets/c42a4028-2c74-4647-9789-19789106aef0)
+
+Listeleme işlemi için herhangi bir attribute (özellik) kullanmadık. Programımızı çalıştırıyoruz.
+
+![image](https://github.com/user-attachments/assets/a89957cc-60d5-4837-b3d0-52412382591c)
+
+Çalıştırdığımız zaman bize 500 kodlu bir hata karşımıza çıkacaktır. Bu hatanın sebebi herhangi bir metodun başına o metodun attribute türü yazılmazsa hata döndürecektir. Bu nedenle metodun üst kısmına [HttpGet] özelliğini ekliyoruz.
+
+![image](https://github.com/user-attachments/assets/cc5380b9-8c74-4f08-b3fc-22b5544a8d5a)
+
+HttpGet özelliğini ekledik. Programımızı şimdi çalıştırabiliriz.
+
+![image](https://github.com/user-attachments/assets/c0a9bc52-f975-4332-8bed-4b3132afd051)
+
+GET özelliği karşımıza çıktı. Buraya tıklıyoruz. Bir önceki POST işlemde yaptığımız gibi önce Try it out, ardından Execute diyoruz.
+
+![image](https://github.com/user-attachments/assets/e7c29807-721a-468d-867d-8fa843ba927f)
+
+Burada veriler JSON formatında gelmektedir. Sağ tarafta Download kısmına tıklayarak verileri JSON formatında indirebilirsiniz. Sol tarafta yer alan 200 kodu, HTTP durum kodları içerisinde başarılı olduğunu bildirmektedir.
+
+## ![website_6156496](https://github.com/user-attachments/assets/e8bcd0f5-804b-4fbf-b847-1f5e6abd6f3b) HTTP Durum Kodları
+HTTP durum kodları, istemci (tarayıcı) ile sunucu arasındaki iletişimin sonucunu belirten üç haneli sayılardır. Bu kodlar 5 ana kategoriye ayrılır:
+
+### ℹ️ 1xx - Bilgilendirici Yanıtlar
+📌 100 Continue → Devam et, işlem sürdürülmeli.<br>
+📌 101 Switching Protocols → Protokol değişimi yapılıyor.<br>
+📌 103 Early Hints → Önbellekleme için erken ipuçları veriliyor.<br>
+
+### ✅ 2xx - Başarılı Yanıtlar
+📌 200 OK → İstek başarıyla tamamlandı.<br>
+📌 201 Created → Yeni bir kaynak oluşturuldu.<br>
+📌 202 Accepted → İstek kabul edildi ancak henüz işlenmedi.<br>
+📌 204 No Content → Başarıyla işlendi, ama içerik yok.<br>
+
+### ⚠️ 3xx - Yönlendirme Yanıtları
+📌 301 Moved Permanently → Kaynak kalıcı olarak taşındı.<br>
+📌 302 Found → Kaynak geçici olarak taşındı.<br>
+📌 304 Not Modified → İçerik değişmemiş, önbellek kullanılabilir.<br>
+📌 307 Temporary Redirect → Geçici yönlendirme, HTTP metodunu korur.<br>
+📌 308 Permanent Redirect → Kalıcı yönlendirme, HTTP metodunu korur.<br>
+
+### ❌ 4xx - İstemci Hata Yanıtları
+📌 400 Bad Request → Geçersiz istek.<br>
+📌 401 Unauthorized → Kimlik doğrulama gerekli.<br>
+📌 403 Forbidden → Erişim yasak.<br>
+📌 404 Not Found → Kaynak bulunamadı.<br>
+📌 405 Method Not Allowed → Kullanılan HTTP metodu desteklenmiyor.<br>
+📌 408 Request Timeout → İstek zaman aşımına uğradı.<br>
+📌 429 Too Many Requests → Çok fazla istek gönderildi, sınır aşıldı.<br>
+
+### ‼️ 5xx - Sunucu Hata Yanıtları
+📌 500 Internal Server Error → Sunucu tarafında bilinmeyen hata.<br>
+📌 502 Bad Gateway → Geçersiz ara sunucu (proxy) yanıtı.<br>
+📌 503 Service Unavailable → Sunucu geçici olarak kullanılamıyor.<br>
+📌 504 Gateway Timeout → Sunucu, diğer sunucudan yanıt alamadı.<br>
+
+Silme işlemi için kullanacağımız attribute [HttpDelete] olacaktır.
+
+![image](https://github.com/user-attachments/assets/41f6129a-d3ac-4bb8-877f-cf4714b79d93)
+
+HttpDelete özelliğini kullandıktan sonra DeleteCategory isminde bir metot oluşturuyoruz ve içerisinde int türünden id değerini alıyoruz.<br>
+Ardından var türünden value isminde bir değişken oluşturup id değerini bulmak için Find metodunu kullanıyoruz.<br>
+Bulduğumuz bu id değerini silmek için Remove metodunu kullanıyoruz ve değişiklikleri kaydediyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/8470eca4-a635-4d9e-aa0d-9cdb3bf7930b)
+
+DELETE özelliği karşımıza bu şekilde çıkacaktır. Buraya gelip silmek istediğimiz id değerini giriyoruz.
+
+![image](https://github.com/user-attachments/assets/594f0ee9-91c0-4a78-83e8-f674869486e3)
+
+Buradan 4 numaralı id değerini giriyoruz ve Execute diyoruz. Silme işleminde herhangi bir sorun yoksa 200 kodu dönderecektir. Peki id değeri olmayan bir değer silmeye çalışalım.
+
+![image](https://github.com/user-attachments/assets/42de0178-a33f-4150-bdca-3ada0543521b)
+
+Değeri 55 girdiğimiz zaman bu kez 500 hata kodunu dönderecektir.
+
+ID getirme işlemini yapıyoruz. Bunun için [HttpGet] özelliğini kullanıyoruz.
+
+![image](https://github.com/user-attachments/assets/ec7dd53b-0885-42b3-ab13-803543f532c3)
+
+Kodları yazdıktan sonra çalıştırmayı deneyelim.
+
+![image](https://github.com/user-attachments/assets/5981121e-71ba-4f56-a803-323155ac2cdf)
+
+Programı çalıştırdığımız zaman karşımıza bu şekilde bir hata gelecektir. Bu hatanın sebebi; bir Controller içerisinde aynı attribute türündeki metotlar birden fazla kez kullanılamaz. Daha önce listeleme işlemi için HttpGet kullanmıştık. Bu yüzden bir daha bu metodu bu şekilde kullanamıyoruz. Bu hatanın önüne geçebilmek için yazacağımız kod şu şekildedir;
+
+![image](https://github.com/user-attachments/assets/34145b31-5e91-41c6-9957-ffc4eeb403cd)
+
+HttpGet dedikten sonra bir parantez açıp çift tırnak içerisine oluşturduğumuz GetCategory ismindeki metodun aynısını yazıyoruz.
+
+![image](https://github.com/user-attachments/assets/65aed652-ac2d-4dfa-9c79-b267654b37e6)
+
+Programı çalıştırdığımız zaman gördüğünüz gibi en altta GET türünde bir özellik çıksa da Categories kısmın sonunda GetCategory yer almaktadır. Buraya girip getireceğimiz id değerini giriyoruz.
+
+![image](https://github.com/user-attachments/assets/ebd72ae2-00ee-4896-b83a-2be3044cd59c)
+
+ID değerini 2 girdiğimiz zaman "Tatlılar" ismindeki kategoriyi ekrana getirmektedir.
+
+Güncelleme işlemi için kullanacağımız özellik [HttpPut] olacaktır.
+
+![image](https://github.com/user-attachments/assets/08b9a17c-be87-42f2-bb38-3703600fe6ef)
+
+Güncelleme işlemi için kodlar bu şekildedir. Ekleme metodundaki kodlar ile aynıdır ancak buradaki tek fark, Add yerine Update metodunu kullanıyoruz.
+
+![image](https://github.com/user-attachments/assets/1ffa0d4d-4bcd-4722-98fa-c646292d1992)
+
+Artık PUT işlemi de gelmektedir. Güncellemek istediğimiz değeri girelim.
+
+![image](https://github.com/user-attachments/assets/5939e9f9-d9b2-454d-8e62-c46b6395b2e2)
+
+Burada önce ID değerini yazıyoruz. Ardından güncelleyeceğimiz değerin ismini yazıyoruz. Örneğin id değeri 1 olan kategorinin ismi "Çorbalar" iken burayı "aaaa" olarak değiştirdik. SQL tablomuza gidelim.
+
+![image](https://github.com/user-attachments/assets/3405e742-db69-458c-b664-acd24000539a)
+
+Gördüğünüz gibi 1 numaralı olan kategorinin ismi aaaa olarak belirlenmiş oldu.
