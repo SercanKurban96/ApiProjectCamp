@@ -17,6 +17,8 @@
 📌 Veri tabanı olarak MSSQL kullanılmıştır.<br>
 📌 ORM aracı olarak Entity Framework, geliştirme yaklaşımı olarak Code First kullanılmıştır.<br>
 
+<hr>
+
 ## 🖥️ #2 Api Proje Kampı - Projenin Oluşturulması
 ### 📆 Tarih: 3 Şubat 2025
 <br>
@@ -81,6 +83,8 @@ API (Application Programming Interface – Uygulama Programlama Arayüzü), fark
 
 Tekrardan katmanımıza gelerek Entities isminde bir tane klasör oluşturuyoruz.
 
+<hr>
+
 ## 🖥️ #3 Api Proje Kampı - Entitylerin Oluşturulması
 ### 📆 Tarih: 3 Şubat 2025
 <br>
@@ -142,6 +146,8 @@ Kategorilerin bir Product ile ilişkili olması gerekmektedir. Şimdilik bu adı
 
 ✅ Reservation alanı için gerekli entitylerimizi hazırladık.
 
+<hr>
+
 ## 🖥️ #4 Api Proje Kampı - Entitylerin Tamamlanması ve Paketlerin Kurulması
 ### 📆 Tarih: 5 Şubat 2025
 <br>
@@ -191,6 +197,8 @@ Bu paketleri kurarken seçeceğimiz sürüm, ASP.NET Core 6.0 ile çalıştığ�
 
 Paketlerimiz yüklenmiştir. Dependencies kısmından Packages olana tıkladığımızda burada kurulan paketleri görebiliriz.
 
+<hr>
+
 ## 🖥️ #5 Api Proje Kampı - Migration İşlemleri
 ### 📆 Tarih: 5 Şubat 2025
 <br>
@@ -239,6 +247,7 @@ Done yazısı çıkarsa migration işlemi tamamlanmış demektir. Veri tabanım�
 
 Veri tabanımız ve tablolar oluşturuldu.
 
+<hr>
 
 ## 🖥️ #6 Api Proje Kampı - Swagger Aracı, DI ve Kategori Ekleme İşlemi
 ### 📆 Tarih: 10 Şubat 2025
@@ -311,6 +320,8 @@ Birkaç tane veri girişi yaptıktan sonra SQL'e dönüyoruz ve verilerimiz veri
 ![image](https://github.com/user-attachments/assets/b49295bd-e309-4bb1-8c60-ae5d999cecd9)
 
 Kategorilerimiz SQL veri tabanına yansımış oldu.
+
+<hr>
 
 ## 🖥️ #7 Api Proje Kampı - Kategori Api İşlemlerinin Tamamlanması
 ### 📆 Tarih: 10 Şubat 2025
@@ -434,6 +445,8 @@ Burada önce ID değerini yazıyoruz. Ardından güncelleyeceğimiz değerin ism
 
 Gördüğünüz gibi 1 numaralı olan kategorinin ismi aaaa olarak belirlenmiş oldu.
 
+<hr>
+
 ## 🖥️ #8 Api Proje Kampı - Chef Api İşlemleri
 ### 📆 Tarih: 10 Şubat 2025
 <br>
@@ -449,3 +462,19 @@ Bir önceki CategoriesController'da yer alan CRUD işlemlerinin aynısını bu k
 ![image](https://github.com/user-attachments/assets/7e515f4d-d818-4dfd-991e-5b26cdcc90cc)
 
 Artık iki tane alanımız oldu. Şefler üzerinden CRUD işlemlerimizi yapabiliriz.
+
+<hr>
+
+## 🖥️ #9 Api Proje Kampı - Dto ile Manuel Mapleme İşlemi
+### 📆 Tarih: 20 Şubat 2025
+<br>
+![image](https://github.com/user-attachments/assets/7bd36e68-7135-49ad-a0dc-f0bf738be806)<br><br>
+Katmanımıza sağ tıklayarak yeni bir klasör oluşturuyoruz. Klasörümüzün ismini "Dtos" olarak belirliyoruz.<br><br>
+Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "Contact" olacaktır.<br>
+![image](https://github.com/user-attachments/assets/c6cf325e-9e1c-48c6-9a0b-366b099bd0a7)<br><br>
+📍 Dtos klasörüne sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini "ContactDtos" olarak belirliyoruz.<br>
+ℹ️ Dtos bize burada entitylerimiz ile yapmak istediğimiz işlemlerdeki propertyler arasında bir köprü görevi görmektedir.<br>
+📍 Dto işlemlerinde Listeleme, Ekleme, Güncelleme ve ID'ye Göre Getirme işlemleri yapılacaktır.<br>
+‼️ Silme işlemi <b>yapılmayacaktır!</b><br><br>
+📍 ContactDtos klasörüne sağ tıklayıp yeni bir class oluşturacağız. İlk önce listeleme işlemi yapacağız. Listeleme işlemi için ismini "ResultContactDto" olarak belirliyoruz.<br> 
+✅ Entities klasöründe yer alan Contact class'ına gelip içerisindeki bütün propertyleri kopyalayıp ResultContactDto içerisine yapıştırıyoruz.<br>
