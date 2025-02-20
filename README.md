@@ -481,5 +481,37 @@ Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "
 ℹ️ Dtos bize burada entitylerimiz ile yapmak istediğimiz işlemlerdeki propertyler arasında bir köprü görevi görmektedir.<br>
 📍 Dto işlemlerinde Listeleme, Ekleme, Güncelleme ve ID'ye Göre Getirme işlemleri yapılacaktır.<br>
 ‼️ Silme işlemi <b>yapılmayacaktır!</b><br><br>
+
+![image](https://github.com/user-attachments/assets/bbd72bd1-af41-4bf2-ad2f-acfc6a61e0d2)
+<br>
+
 📍 ContactDtos klasörüne sağ tıklayıp yeni bir class oluşturacağız. İlk önce listeleme işlemi yapacağız. Listeleme işlemi için ismini "ResultContactDto" olarak belirliyoruz.<br> 
-✅ Entities klasöründe yer alan Contact class'ına gelip içerisindeki bütün propertyleri kopyalayıp ResultContactDto içerisine yapıştırıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/76ad1754-5c76-4407-b298-3193dc8ff38c)
+<br>
+📌 Entities klasöründe yer alan Contact class'ına gelip içerisindeki bütün propertyleri kopyalayıp ResultContactDto içerisine yapıştırıyoruz.<br><br>
+
+📍 Bu kez güncelleme işlemini yapacağız. Güncelleme işlemi için ismini "UpdateContactDto" olarak belirliyoruz.<br> 
+
+![image](https://github.com/user-attachments/assets/d3f6c0a1-def4-48df-bd0c-23ea3c54e4a9)
+<br>
+📌 ResultContactDto class'ında da olduğu gibi tüm alanları UpdateContactDto class'ın içerisine yapıştırıyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/9682c31d-adde-4782-a008-444dc2f1801f)
+<br>
+
+![image](https://github.com/user-attachments/assets/a4d121d2-d1ed-4b34-bb87-0214e43b22c9)
+<br>
+
+![image](https://github.com/user-attachments/assets/6c518abc-530a-47fc-8156-b50e85a4846c)
+<br>
+
+📍 GetByIDContactDto ve CreateContactDto sınıflarını da oluşturduk. GetByIDContactDto sınıfında bütün özellikler yer alırken CreateContactDto sınıfında ise sadece ID özelliği yer almayacaktır.<br><br>
+
+✅ Tüm Dto'ları oluşturduktan sonra artık Controller işlemlerine geçebiliriz. Yeni bir Controller oluşturuyoruz ve ismini ContactController olarak belirliyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/91a289db-1eea-410e-82f3-b0bb24415eb5)
+<br>
+Listeleme işlemi bir önceki yaptığımız entity işlemleri ile aynıdır ancak ekleme işleminde burada bir CreateContactDto sınıfını çağırmış olduk. İlk olarak Contact sınıfından bir nesne belirledik, ardından bu parametreleri tek tek Dto ile eşleştirdik. En sonda sorguyu kaydetmek için diğer işlemlerde de olduğu gibi SaveChanges kullandık.<br><br>
+
+<hr>
