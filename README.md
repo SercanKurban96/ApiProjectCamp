@@ -468,7 +468,10 @@ Artık iki tane alanımız oldu. Şefler üzerinden CRUD işlemlerimizi yapabili
 ## 🖥️ #9 Api Proje Kampı - Dto ile Manuel Mapleme İşlemi
 ### 📆 Tarih: 20 Şubat 2025
 <br>
-![image](https://github.com/user-attachments/assets/7bd36e68-7135-49ad-a0dc-f0bf738be806)<br><br>
+
+![image](https://github.com/user-attachments/assets/d3d9a19e-8931-4b45-9286-d4a4b0a8b116)
+
+<br>
 Katmanımıza sağ tıklayarak yeni bir klasör oluşturuyoruz. Klasörümüzün ismini "Dtos" olarak belirliyoruz.<br><br>
 Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "Contact" olacaktır.<br>
 ![image](https://github.com/user-attachments/assets/c6cf325e-9e1c-48c6-9a0b-366b099bd0a7)<br><br>
