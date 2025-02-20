@@ -474,7 +474,9 @@ Artık iki tane alanımız oldu. Şefler üzerinden CRUD işlemlerimizi yapabili
 <br>
 Katmanımıza sağ tıklayarak yeni bir klasör oluşturuyoruz. Klasörümüzün ismini "Dtos" olarak belirliyoruz.<br><br>
 Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "Contact" olacaktır.<br>
+
 ![image](https://github.com/user-attachments/assets/c6cf325e-9e1c-48c6-9a0b-366b099bd0a7)<br><br>
+
 📍 Dtos klasörüne sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini "ContactDtos" olarak belirliyoruz.<br>
 ℹ️ Dtos bize burada entitylerimiz ile yapmak istediğimiz işlemlerdeki propertyler arasında bir köprü görevi görmektedir.<br>
 📍 Dto işlemlerinde Listeleme, Ekleme, Güncelleme ve ID'ye Göre Getirme işlemleri yapılacaktır.<br>
