@@ -74,10 +74,10 @@ API (Application Programming Interface – Uygulama Programlama Arayüzü), fark
 📍 <strong>WebSocket API:</strong> Gerçek zamanlı veri akışı sağlayan bir API türüdür.<br>
 
 ### 📌 API Kullanım Alanları
-✅Web siteleri ve mobil uygulamalar arası veri paylaşımı<br>
-✅Üçüncü taraf entegrasyonları (örneğin: ödeme sistemleri, harita servisleri)<br>
-✅IoT (Nesnelerin İnterneti) cihazları ile veri alışverişi<br>
-✅Bulut servisleriyle entegrasyon<br>
+✅ Web siteleri ve mobil uygulamalar arası veri paylaşımı<br>
+✅ Üçüncü taraf entegrasyonları (örneğin: ödeme sistemleri, harita servisleri)<br>
+✅ IoT (Nesnelerin İnterneti) cihazları ile veri alışverişi<br>
+✅ Bulut servisleriyle entegrasyon<br>
 
 Özetle, API’ler farklı sistemlerin uyumlu şekilde çalışmasını sağlayan bir köprü görevi görür.
 
@@ -275,7 +275,7 @@ Context sınıfımızda yer alan ApiContext işlemi için, burada Dependency Inj
 
 Buradan private readonly üzerinden bir nesne örneği türettik ve ardından bir tane Constructor oluşturduk.
 
-### !!! Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
+### ‼️ Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
 
 ![image](https://github.com/user-attachments/assets/e2c7bc88-ad34-4e48-a48f-4a31fda99c3c)
 
@@ -528,3 +528,30 @@ Kalan CRUD işlemlerini tamamlıyoruz. Silme ve ID'ye göre getirme işleminde D
 ![image](https://github.com/user-attachments/assets/283f4bd6-2606-442e-b601-f64ed0aa9980)
 <br>
 Uygulamamızı çalıştırdığımız zaman Contact tablosuna ait CRUD işlemleri yapabiliriz.<br>
+
+<hr>
+
+## 🖥️ #11 Api Proje Kampı - General Mapping ve Auto Mapper
+### 📆 Tarih: 20 Şubat 2025
+<br>
+
+## ⚙️ AutoMapper Nedir?
+AutoMapper, .NET platformunda kullanılan, nesneler arası dönüşümü kolaylaştıran bir nesne eşleme (object mapping) kütüphanesidir. Özellikle ViewModel, DTO (Data Transfer Object) ve Entity gibi farklı katmanlardaki nesneler arasında veri taşımak için kullanılır.<br><br>
+
+### 📌 AutoMapper’ın Avantajları
+✅ Kod Tekrarını Azaltır → Nesneleri manuel olarak eşlemek yerine, AutoMapper ile otomatik dönüştürme yapılabilir.<br>
+✅ Bakımı Kolaylaştırır → Eşleme mantığı merkezi olarak tanımlandığından, kod karmaşıklığını azaltır.<br>
+✅ Performansı Artırır → Büyük ve karmaşık nesneler için optimize edilmiştir.<br>
+✅ Zaman Kazandırır → Özellikle büyük projelerde sürekli tekrar eden eşleme kodlarından kurtarır.<br><br>
+
+AutoMapper için öncelikle paket yüklememiz gerekmektedir. Katmanımıza sağ tıklayarak Manage NuGet Packages diyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/2d1da498-7819-409a-a06c-273426e0569e)
+<br>
+Browse kısmına AutoMapper yazıyoruz ve ilk sırada yer alan AutoMapper paketini yüklüyoruz, ancak biz .NET 6.0 sürümünü kullandığımız için son sürüm olan 14.0.0 sürümünü desteklememektedir. Onun yerine bir alt sürüm olan 13.0.1 sürümünü yüklüyoruz.<br><br>
+
+Paketimizi yükledikten sonra bu kez "Feature" işlemlerini gerçekleştireceğiz.<br><br>
+
+![image](https://github.com/user-attachments/assets/57a8c10c-d153-42fd-b1e5-2748c79847ad)
+<br>
+📍 Dtos klasörüne sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini FeatureDtos olarak belirliyoruz.<br>
