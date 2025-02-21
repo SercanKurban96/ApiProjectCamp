@@ -515,3 +515,16 @@ Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "
 Listeleme işlemi bir önceki yaptığımız entity işlemleri ile aynıdır ancak ekleme işleminde burada bir CreateContactDto sınıfını çağırmış olduk. İlk olarak Contact sınıfından bir nesne belirledik, ardından bu parametreleri tek tek Dto ile eşleştirdik. En sonda sorguyu kaydetmek için diğer işlemlerde de olduğu gibi SaveChanges kullandık.<br><br>
 
 <hr>
+
+## 🖥️ #10 Api Proje Kampı - Contact Apinin Test Edilmesi
+### 📆 Tarih: 20 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/723effd2-489b-4af3-b4f2-a3e5999d5b24)
+<br>
+
+Kalan CRUD işlemlerini tamamlıyoruz. Silme ve ID'ye göre getirme işleminde Dto kullanmadık. Yalnızca güncelleme işleminde Dto kullanmış olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/283f4bd6-2606-442e-b601-f64ed0aa9980)
+<br>
+Uygulamamızı çalıştırdığımız zaman Contact tablosuna ait CRUD işlemleri yapabiliriz.<br>
