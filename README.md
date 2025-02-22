@@ -621,3 +621,25 @@ FeaturesController oluşturuyoruz.<br><br>
 <br>
 Controller oluşturduktan sonra ApiContext sınıfına ek olarak private readonly IMapper interface'i çağırıyoruz, ardından Constructor ekliyoruz.<br><br>
 
+![image](https://github.com/user-attachments/assets/ed67ef04-360f-496e-99a5-28c188b1b1e3)
+<br>
+Listeleme işlemini oluşturuyoruz. Ancak listeyi getirirken oluşturduğumuz Dto ile mapleyerek getiriyoruz. Bunun için return Ok dedikten sonra interface'den oluşturduğumuz _mapper dedikten sonra Map komutunu kullanıyoruz. Mapleme işleminden sonra List diyoruz. Bu listenin T öğesi tam olarak ResultFeatureDto'yu alacak. ResultFeatureDto, values'tan gelen değerle maplenecektir.<br><br>
+
+![image](https://github.com/user-attachments/assets/d744e0ec-8bf6-4284-bfbd-e659b145c476)
+<br>
+Ekleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından createFeatureDto'yu eşleştirmiş olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/833a5c3a-7e8b-4cba-9f73-80c3dd550fe5)
+<br>
+Silme işleminde herhangi bir Dto kullanmadık.<br><br>
+
+![image](https://github.com/user-attachments/assets/d1ae03b1-bbf6-43d9-9ed5-3b938a28b8b3)
+<br>
+ID'ye göre getirme işleminde de bir Dto uyguladık. Mapleme işleminden sonra GetByIDFeatureDto kullanarak value değerine eşleştirmiş olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/d2d53cb8-d659-4765-a7e2-4ae9ce99c82b)
+<br>
+Güncelleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından updateFeatureDto'yu eşleştirmiş olduk.<br><br>
+
+<hr>
+
