@@ -74,10 +74,10 @@ API (Application Programming Interface – Uygulama Programlama Arayüzü), fark
 📍 <strong>WebSocket API:</strong> Gerçek zamanlı veri akışı sağlayan bir API türüdür.<br>
 
 ### 📌 API Kullanım Alanları
-✅Web siteleri ve mobil uygulamalar arası veri paylaşımı<br>
-✅Üçüncü taraf entegrasyonları (örneğin: ödeme sistemleri, harita servisleri)<br>
-✅IoT (Nesnelerin İnterneti) cihazları ile veri alışverişi<br>
-✅Bulut servisleriyle entegrasyon<br>
+✅ Web siteleri ve mobil uygulamalar arası veri paylaşımı<br>
+✅ Üçüncü taraf entegrasyonları (örneğin: ödeme sistemleri, harita servisleri)<br>
+✅ IoT (Nesnelerin İnterneti) cihazları ile veri alışverişi<br>
+✅ Bulut servisleriyle entegrasyon<br>
 
 Özetle, API’ler farklı sistemlerin uyumlu şekilde çalışmasını sağlayan bir köprü görevi görür.
 
@@ -275,7 +275,7 @@ Context sınıfımızda yer alan ApiContext işlemi için, burada Dependency Inj
 
 Buradan private readonly üzerinden bir nesne örneği türettik ve ardından bir tane Constructor oluşturduk.
 
-### !!! Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
+### ‼️ Eğer bir yerde constructor yapıyorsak registration yapılması gerekmektedir. Buradan Program.cs sınıfını seçiyoruz.
 
 ![image](https://github.com/user-attachments/assets/e2c7bc88-ad34-4e48-a48f-4a31fda99c3c)
 
@@ -508,10 +508,198 @@ Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "
 
 📍 GetByIDContactDto ve CreateContactDto sınıflarını da oluşturduk. GetByIDContactDto sınıfında bütün özellikler yer alırken CreateContactDto sınıfında ise sadece ID özelliği yer almayacaktır.<br><br>
 
-✅ Tüm Dto'ları oluşturduktan sonra artık Controller işlemlerine geçebiliriz. Yeni bir Controller oluşturuyoruz ve ismini ContactController olarak belirliyoruz.<br><br>
+✅ Tüm Dto'ları oluşturduktan sonra artık Controller işlemlerine geçebiliriz. Yeni bir Controller oluşturuyoruz ve ismini ContactsController olarak belirliyoruz.<br><br>
 
-![image](https://github.com/user-attachments/assets/91a289db-1eea-410e-82f3-b0bb24415eb5)
+![image](https://github.com/user-attachments/assets/0430b468-ad61-4b3f-a8b1-e883e7629439)
 <br>
 Listeleme işlemi bir önceki yaptığımız entity işlemleri ile aynıdır ancak ekleme işleminde burada bir CreateContactDto sınıfını çağırmış olduk. İlk olarak Contact sınıfından bir nesne belirledik, ardından bu parametreleri tek tek Dto ile eşleştirdik. En sonda sorguyu kaydetmek için diğer işlemlerde de olduğu gibi SaveChanges kullandık.<br><br>
 
 <hr>
+
+## 🖥️ #10 Api Proje Kampı - Contact Apinin Test Edilmesi
+### 📆 Tarih: 20 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/723effd2-489b-4af3-b4f2-a3e5999d5b24)
+<br>
+
+Kalan CRUD işlemlerini tamamlıyoruz. Silme ve ID'ye göre getirme işleminde Dto kullanmadık. Yalnızca güncelleme işleminde Dto kullanmış olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/b6fad221-0910-4d78-88c8-558920db3a9d)
+<br>
+Uygulamamızı çalıştırdığımız zaman Contact tablosuna ait CRUD işlemleri yapabiliriz.<br>
+
+<hr>
+
+## 🖥️ #11 Api Proje Kampı - General Mapping ve Auto Mapper
+### 📆 Tarih: 20 Şubat 2025
+<br>
+
+## ⚙️ AutoMapper Nedir?
+AutoMapper, .NET platformunda kullanılan, nesneler arası dönüşümü kolaylaştıran bir nesne eşleme (object mapping) kütüphanesidir. Özellikle ViewModel, DTO (Data Transfer Object) ve Entity gibi farklı katmanlardaki nesneler arasında veri taşımak için kullanılır.<br><br>
+
+### 📌 AutoMapper’ın Avantajları
+✅ Kod Tekrarını Azaltır → Nesneleri manuel olarak eşlemek yerine, AutoMapper ile otomatik dönüştürme yapılabilir.<br>
+✅ Bakımı Kolaylaştırır → Eşleme mantığı merkezi olarak tanımlandığından, kod karmaşıklığını azaltır.<br>
+✅ Performansı Artırır → Büyük ve karmaşık nesneler için optimize edilmiştir.<br>
+✅ Zaman Kazandırır → Özellikle büyük projelerde sürekli tekrar eden eşleme kodlarından kurtarır.<br><br>
+
+AutoMapper için öncelikle paket yüklememiz gerekmektedir. Katmanımıza sağ tıklayarak Manage NuGet Packages diyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/2d1da498-7819-409a-a06c-273426e0569e)
+<br>
+Browse kısmına AutoMapper yazıyoruz ve ilk sırada yer alan AutoMapper paketini yüklüyoruz, ancak biz .NET 6.0 sürümünü kullandığımız için son sürüm olan 14.0.0 sürümünü desteklememektedir. Onun yerine bir alt sürüm olan 13.0.1 sürümünü yüklüyoruz.<br><br>
+
+Paketimizi yükledikten sonra bu kez "Feature" işlemlerini gerçekleştireceğiz.<br><br>
+
+![image](https://github.com/user-attachments/assets/57a8c10c-d153-42fd-b1e5-2748c79847ad)
+<br>
+📍 Dtos klasörüne sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini FeatureDtos olarak belirliyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/8835f1f8-9ceb-435f-a0d1-78e27257124a)
+<br>
+📍 FeatureDtos klasörüne sağ tıklayıp tek tek class'larımızı tanımlıyoruz.<br>
+
+📍 Tüm classları ekledikten sonra Entities klasöründe yer alan Feature kısmındaki tüm propertyleri kopyalayıp oluşturduğumuz FeatureDto sınıfındakilere yapıştırıyoruz. <b>Ancak CreateFeatureDto sınıfında FeatureID olanı eklemiyoruz.</b><br><br>
+
+![image](https://github.com/user-attachments/assets/5eca09cd-dc4f-469d-b6d5-6677f344ed08)
+<br>
+📌 Feature işlemleri tamamlandıktan sonra bu kez "Message" işlemlerine devam ediyoruz. Aynı şekilde tüm Dto'ları tanımlıyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/16badcaa-678c-43b5-9620-55f46763127a)
+<br>
+➕ Message Dto'ları tanımladıktan sonra artık Mapleme işlemine başlayacağız. Bunun için katmanımıza sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini "Mapping" olarak belirliyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/f405ae94-6cf8-420d-9f38-182088db0eec)
+<br>
+➕ Ardından Mapping klasörüne sağ tıklayıp yeni bir class oluşturuyoruz. İsmini "GeneralMapping" olarak belirledik.<br> 
+
+![image](https://github.com/user-attachments/assets/dcb1a3d6-ff7b-4b00-8240-ecc5cbabc81e)
+<br>
+GeneralMapping adlı sınıfımızı oluşturduk. Yapılacak adımlar aşağıda yer verilmiştir:<br><br>
+
+![image](https://github.com/user-attachments/assets/f23910b2-a0b7-456b-9a2a-05d72c1736a8)
+<br>
+1️⃣ İlk olarak bu sınıftan Profile isminde miras alma işlemiyle başlıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/dfbd58c4-f677-4eef-80d1-0082bce9568e)
+<br>
+2️⃣ AutoMapper'da maplenecek ifadeleri bir Constructor içinde yazıyoruz. Kısayoldan ctor yazdıktan sonra TAB tuşuna basıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/099274d7-3eb5-4693-893c-a152e33ec2a7)
+<br>
+3️⃣ Maplemeler şu şekilde yapılmaktadır. Önce CreateMap diyoruz ve < sembolünü açıyoruz. Biz burada iki tane sınıfla çalıştık; bunlar Message ve Feature sınıflarıdır. Örnek olarak CreateMap< dedikten sonra Feature sınıfından sonra , işareti koyup ResultFeatureDto sınıfını mapliyoruz. Ardından bu mapleme işlemini tersten yapmak için ReverseMap() metodunu kullanıyoruz.<br>
+
+## ⚙️ ReverseMap() Nedir?
+ReverseMap() metodu, AutoMapper kütüphanesinde kullanılan bir fonksiyondur. Bir nesne ile başka bir nesne arasındaki eşlemeyi tersine çevirmek için kullanılır. Yani, iki yönlü dönüşüm sağlar.<br><br>
+
+### 📌 ReverseMap() Ne İşe Yarar?
+Normalde AutoMapper kullanarak bir nesneyi başka bir nesneye eşlemek için CreateMap<TSource, TDestination>() kullanırız. Ancak, bu eşleme tek yönlüdür. Eğer dönüşümü iki yönlü yapmak istiyorsak, ReverseMap() kullanabiliriz.<br><br>
+
+### 📌 ReverseMap() Kullanmanın Avantajları:
+✅ Kod tekrarını önler: Tek bir CreateMap tanımı ile iki yönlü dönüşüm sağlanır.<br>
+✅ Kod okunabilirliğini artırır: Her iki dönüşümü de tek satırda tanımlayabiliriz.<br>
+✅ Bakımı kolaylaştırır: Model değişirse, her iki dönüşüm de güncellenmiş olur.<br><br>
+
+ℹ️ Özetle: ReverseMap(), AutoMapper kullanarak iki yönlü dönüşüm yapmamızı sağlar ve kodumuzu daha sade hale getirir.<br><br>
+
+![image](https://github.com/user-attachments/assets/de831f2e-07dc-4cc7-8097-3c0993110c32)
+<br>
+ReverseMap() metodunun tanımını ve ne işe yaradığını açıkladıktan sonra Feature ve Message üzerinden kalan mapleme işlemlerini tamamlıyoruz.<br><br>
+
+<hr>
+
+## 🖥️ #12 Api Proje Kampı - Feature Maplemeleri
+### 📆 Tarih: 21 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/5e0eaa18-7a79-4420-933d-97e770bfa601)
+<br>
+FeaturesController oluşturuyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/00df5875-e4af-4665-b3d2-3fd0569c0e14)
+<br>
+Controller oluşturduktan sonra ApiContext sınıfına ek olarak private readonly IMapper interface'i çağırıyoruz, ardından Constructor ekliyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/ed67ef04-360f-496e-99a5-28c188b1b1e3)
+<br>
+Listeleme işlemini oluşturuyoruz. Ancak listeyi getirirken oluşturduğumuz Dto ile mapleyerek getiriyoruz. Bunun için return Ok dedikten sonra interface'den oluşturduğumuz _mapper dedikten sonra Map komutunu kullanıyoruz. Mapleme işleminden sonra List diyoruz. Bu listenin T öğesi tam olarak ResultFeatureDto'yu alacak. ResultFeatureDto, values'tan gelen değerle maplenecektir.<br><br>
+
+![image](https://github.com/user-attachments/assets/072e032a-25ae-4331-bb92-e1594b2e04b6)
+<br>
+Ekleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından createFeatureDto'yu eşleştirmiş olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/4dd48f63-6696-4126-bccc-fc668f7fba35)
+<br>
+Silme işleminde herhangi bir Dto kullanmadık.<br><br>
+
+![image](https://github.com/user-attachments/assets/d1ae03b1-bbf6-43d9-9ed5-3b938a28b8b3)
+<br>
+ID'ye göre getirme işleminde de bir Dto uyguladık. Mapleme işleminden sonra GetByIDFeatureDto kullanarak value değerine eşleştirmiş olduk.<br><br>
+
+![image](https://github.com/user-attachments/assets/331f5caa-dabb-4a4f-8865-c24cdb136916)
+<br>
+Güncelleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından updateFeatureDto'yu eşleştirmiş olduk.<br><br>
+
+<hr>
+
+## 🖥️ #13 Api Proje Kampı - AutoMapper'ın Uygulanması
+### 📆 Tarih: 21 Şubat 2025
+<br>
+
+MessagesController oluşturuyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/999db7b3-68c6-47f9-a403-b6c3562269ef)
+<br>
+
+![image](https://github.com/user-attachments/assets/793dbafe-6292-4288-8ba6-2d346e228bb9)
+<br>
+
+MessagesController için CRUD işlemleri bir önceki Features işlemlerinde de olduğu gibidir, ancak Messages işlemlerinde bu tarz CRUD işlemleri pek doğru değildir. İleriki zamanlarda burada yazılan bazı metotlar değişecektir.<br><br>
+
+📍 CRUD işlemlerini tamamladıktan sonra Program.cs kısmına gelip Registration işlemini yapıyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/c4502f78-d3c2-4253-bfae-56a079e303df)
+<br>
+Buraya daha önceden AddDbContext eklemiştik, şimdi de AddAutoMapper metodundan Assembly.GetExecutingAssembly() ekliyoruz. Assembly eklemek için using kütüphanesinden Reflection eklenmelidir.<br><br>
+
+## ⚙️ Assembly.GetExecutingAssembly() Nedir?
+Assembly.GetExecutingAssembly() metodu, şu anda çalışmakta olan derlemeyi (assembly) temsil eden bir Assembly nesnesi döndürür. Başka bir deyişle, bu metod çağrıldığında, çağrının yapıldığı derleme hakkında bilgi verir.<br><br>
+
+### 📌 Kullanımı:
+using System;<br>
+using System.Reflection;<br>
+<br>
+class Program<br>
+{<br>
+    static void Main()<br>
+    {<br>
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();<br>
+<br>
+        Console.WriteLine("Assembly Adı: " + executingAssembly.GetName().Name);<br>
+        Console.WriteLine("Tam Yol: " + executingAssembly.Location);<br>
+    }<br>
+}<br>
+<br>
+
+### 📌 Çıktı (Örnek olarak)
+Assembly Adı: ConsoleApp1<br>
+Tam Yol: C:\Users\...\bin\Debug\net6.0\ConsoleApp1.dll<br>
+<br>
+
+### 📌 Ne Zaman Kullanılır?
+<b>1️⃣ Assembly hakkında bilgi almak için</b><br>
+Derleme adı, sürümü, kültürü gibi bilgileri almak için kullanılır.<br><br>
+
+<b>2️⃣ Kaynak (Embedded Resource) erişimi için</b><br>
+Eğer projeye gömülü (embedded) dosyalar varsa, bunları almak için kullanılabilir.<br><br>
+
+<b>3️⃣ Çalışan uygulamanın yolunu bulmak için</b><br>
+executingAssembly.Location ile uygulamanın çalıştığı konumu öğrenebilirsiniz.<br><br>
+
+### 📌 Alternatifler:
+
+![image](https://github.com/user-attachments/assets/cadfd427-0b3a-4fe5-9543-1f0635305655)
+<br><br>
+ℹ️ Özetle, Assembly.GetExecutingAssembly() metodu, çalışan kodun içinde bulunduğu derlemeyi temsil eden bilgileri almanızı sağlar.<br><br>
+
