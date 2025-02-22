@@ -508,9 +508,9 @@ Category ve Chef işlemlerini tamamlamıştık. Şimdiki yapacağımız işlem "
 
 📍 GetByIDContactDto ve CreateContactDto sınıflarını da oluşturduk. GetByIDContactDto sınıfında bütün özellikler yer alırken CreateContactDto sınıfında ise sadece ID özelliği yer almayacaktır.<br><br>
 
-✅ Tüm Dto'ları oluşturduktan sonra artık Controller işlemlerine geçebiliriz. Yeni bir Controller oluşturuyoruz ve ismini ContactController olarak belirliyoruz.<br><br>
+✅ Tüm Dto'ları oluşturduktan sonra artık Controller işlemlerine geçebiliriz. Yeni bir Controller oluşturuyoruz ve ismini ContactsController olarak belirliyoruz.<br><br>
 
-![image](https://github.com/user-attachments/assets/91a289db-1eea-410e-82f3-b0bb24415eb5)
+![image](https://github.com/user-attachments/assets/0430b468-ad61-4b3f-a8b1-e883e7629439)
 <br>
 Listeleme işlemi bir önceki yaptığımız entity işlemleri ile aynıdır ancak ekleme işleminde burada bir CreateContactDto sınıfını çağırmış olduk. İlk olarak Contact sınıfından bir nesne belirledik, ardından bu parametreleri tek tek Dto ile eşleştirdik. En sonda sorguyu kaydetmek için diğer işlemlerde de olduğu gibi SaveChanges kullandık.<br><br>
 
@@ -525,7 +525,7 @@ Listeleme işlemi bir önceki yaptığımız entity işlemleri ile aynıdır anc
 
 Kalan CRUD işlemlerini tamamlıyoruz. Silme ve ID'ye göre getirme işleminde Dto kullanmadık. Yalnızca güncelleme işleminde Dto kullanmış olduk.<br><br>
 
-![image](https://github.com/user-attachments/assets/283f4bd6-2606-442e-b601-f64ed0aa9980)
+![image](https://github.com/user-attachments/assets/b6fad221-0910-4d78-88c8-558920db3a9d)
 <br>
 Uygulamamızı çalıştırdığımız zaman Contact tablosuna ait CRUD işlemleri yapabiliriz.<br>
 
@@ -555,3 +555,69 @@ Paketimizi yükledikten sonra bu kez "Feature" işlemlerini gerçekleştireceği
 ![image](https://github.com/user-attachments/assets/57a8c10c-d153-42fd-b1e5-2748c79847ad)
 <br>
 📍 Dtos klasörüne sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini FeatureDtos olarak belirliyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/8835f1f8-9ceb-435f-a0d1-78e27257124a)
+<br>
+📍 FeatureDtos klasörüne sağ tıklayıp tek tek class'larımızı tanımlıyoruz.<br>
+
+📍 Tüm classları ekledikten sonra Entities klasöründe yer alan Feature kısmındaki tüm propertyleri kopyalayıp oluşturduğumuz FeatureDto sınıfındakilere yapıştırıyoruz. <b>Ancak CreateFeatureDto sınıfında FeatureID olanı eklemiyoruz.</b><br><br>
+
+![image](https://github.com/user-attachments/assets/5eca09cd-dc4f-469d-b6d5-6677f344ed08)
+<br>
+📌 Feature işlemleri tamamlandıktan sonra bu kez "Message" işlemlerine devam ediyoruz. Aynı şekilde tüm Dto'ları tanımlıyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/16badcaa-678c-43b5-9620-55f46763127a)
+<br>
+➕ Message Dto'ları tanımladıktan sonra artık Mapleme işlemine başlayacağız. Bunun için katmanımıza sağ tıklayıp yeni bir klasör oluşturuyoruz ve ismini "Mapping" olarak belirliyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/f405ae94-6cf8-420d-9f38-182088db0eec)
+<br>
+➕ Ardından Mapping klasörüne sağ tıklayıp yeni bir class oluşturuyoruz. İsmini "GeneralMapping" olarak belirledik.<br> 
+
+![image](https://github.com/user-attachments/assets/dcb1a3d6-ff7b-4b00-8240-ecc5cbabc81e)
+<br>
+GeneralMapping adlı sınıfımızı oluşturduk. Yapılacak adımlar aşağıda yer verilmiştir:<br><br>
+
+![image](https://github.com/user-attachments/assets/f23910b2-a0b7-456b-9a2a-05d72c1736a8)
+<br>
+1️⃣ İlk olarak bu sınıftan Profile isminde miras alma işlemiyle başlıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/dfbd58c4-f677-4eef-80d1-0082bce9568e)
+<br>
+2️⃣ AutoMapper'da maplenecek ifadeleri bir Constructor içinde yazıyoruz. Kısayoldan ctor yazdıktan sonra TAB tuşuna basıyoruz.<br>
+
+![image](https://github.com/user-attachments/assets/099274d7-3eb5-4693-893c-a152e33ec2a7)
+<br>
+3️⃣ Maplemeler şu şekilde yapılmaktadır. Önce CreateMap diyoruz ve < sembolünü açıyoruz. Biz burada iki tane sınıfla çalıştık; bunlar Message ve Feature sınıflarıdır. Örnek olarak CreateMap< dedikten sonra Feature sınıfından sonra , işareti koyup ResultFeatureDto sınıfını mapliyoruz. Ardından bu mapleme işlemini tersten yapmak için ReverseMap() metodunu kullanıyoruz.<br>
+
+## ⚙️ ReverseMap() Nedir?
+ReverseMap() metodu, AutoMapper kütüphanesinde kullanılan bir fonksiyondur. Bir nesne ile başka bir nesne arasındaki eşlemeyi tersine çevirmek için kullanılır. Yani, iki yönlü dönüşüm sağlar.<br><br>
+
+### 📌 ReverseMap() Ne İşe Yarar?
+Normalde AutoMapper kullanarak bir nesneyi başka bir nesneye eşlemek için CreateMap<TSource, TDestination>() kullanırız. Ancak, bu eşleme tek yönlüdür. Eğer dönüşümü iki yönlü yapmak istiyorsak, ReverseMap() kullanabiliriz.<br><br>
+
+### 📌 ReverseMap() Kullanmanın Avantajları:
+✅ Kod tekrarını önler: Tek bir CreateMap tanımı ile iki yönlü dönüşüm sağlanır.<br>
+✅ Kod okunabilirliğini artırır: Her iki dönüşümü de tek satırda tanımlayabiliriz.<br>
+✅ Bakımı kolaylaştırır: Model değişirse, her iki dönüşüm de güncellenmiş olur.<br><br>
+
+ℹ️ Özetle: ReverseMap(), AutoMapper kullanarak iki yönlü dönüşüm yapmamızı sağlar ve kodumuzu daha sade hale getirir.<br><br>
+
+![image](https://github.com/user-attachments/assets/de831f2e-07dc-4cc7-8097-3c0993110c32)
+<br>
+ReverseMap() metodunun tanımını ve ne işe yaradığını açıkladıktan sonra Feature ve Message üzerinden kalan mapleme işlemlerini tamamlıyoruz.<br><br>
+
+<hr>
+
+## 🖥️ #12 Api Proje Kampı - Feature Maplemeleri
+### 📆 Tarih: 21 Şubat 2025
+<br>
+
+![image](https://github.com/user-attachments/assets/5e0eaa18-7a79-4420-933d-97e770bfa601)
+<br>
+FeaturesController oluşturuyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/00df5875-e4af-4665-b3d2-3fd0569c0e14)
+<br>
+Controller oluşturduktan sonra ApiContext sınıfına ek olarak private readonly IMapper interface'i çağırıyoruz, ardından Constructor ekliyoruz.<br><br>
+
