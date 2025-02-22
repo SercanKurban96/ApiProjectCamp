@@ -625,11 +625,11 @@ Controller oluşturduktan sonra ApiContext sınıfına ek olarak private readonl
 <br>
 Listeleme işlemini oluşturuyoruz. Ancak listeyi getirirken oluşturduğumuz Dto ile mapleyerek getiriyoruz. Bunun için return Ok dedikten sonra interface'den oluşturduğumuz _mapper dedikten sonra Map komutunu kullanıyoruz. Mapleme işleminden sonra List diyoruz. Bu listenin T öğesi tam olarak ResultFeatureDto'yu alacak. ResultFeatureDto, values'tan gelen değerle maplenecektir.<br><br>
 
-![image](https://github.com/user-attachments/assets/d744e0ec-8bf6-4284-bfbd-e659b145c476)
+![image](https://github.com/user-attachments/assets/072e032a-25ae-4331-bb92-e1594b2e04b6)
 <br>
 Ekleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından createFeatureDto'yu eşleştirmiş olduk.<br><br>
 
-![image](https://github.com/user-attachments/assets/833a5c3a-7e8b-4cba-9f73-80c3dd550fe5)
+![image](https://github.com/user-attachments/assets/4dd48f63-6696-4126-bccc-fc668f7fba35)
 <br>
 Silme işleminde herhangi bir Dto kullanmadık.<br><br>
 
@@ -637,9 +637,69 @@ Silme işleminde herhangi bir Dto kullanmadık.<br><br>
 <br>
 ID'ye göre getirme işleminde de bir Dto uyguladık. Mapleme işleminden sonra GetByIDFeatureDto kullanarak value değerine eşleştirmiş olduk.<br><br>
 
-![image](https://github.com/user-attachments/assets/d2d53cb8-d659-4765-a7e2-4ae9ce99c82b)
+![image](https://github.com/user-attachments/assets/331f5caa-dabb-4a4f-8865-c24cdb136916)
 <br>
 Güncelleme işleminde de mapleme işlemini yaptık. Burada T değeri olan Feature sınıfını ekledikten sonra tanımlamış olduğumuz Dto sınıfından updateFeatureDto'yu eşleştirmiş olduk.<br><br>
 
 <hr>
+
+## 🖥️ #13 Api Proje Kampı - AutoMapper'ın Uygulanması
+### 📆 Tarih: 21 Şubat 2025
+<br>
+
+MessagesController oluşturuyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/999db7b3-68c6-47f9-a403-b6c3562269ef)
+<br>
+
+![image](https://github.com/user-attachments/assets/793dbafe-6292-4288-8ba6-2d346e228bb9)
+<br>
+
+MessagesController için CRUD işlemleri bir önceki Features işlemlerinde de olduğu gibidir, ancak Messages işlemlerinde bu tarz CRUD işlemleri pek doğru değildir. İleriki zamanlarda burada yazılan bazı metotlar değişecektir.<br><br>
+
+📍 CRUD işlemlerini tamamladıktan sonra Program.cs kısmına gelip Registration işlemini yapıyoruz.<br><br>
+
+![image](https://github.com/user-attachments/assets/c4502f78-d3c2-4253-bfae-56a079e303df)
+<br>
+Buraya daha önceden AddDbContext eklemiştik, şimdi de AddAutoMapper metodundan Assembly.GetExecutingAssembly() ekliyoruz. Assembly eklemek için using kütüphanesinden Reflection eklenmelidir.<br><br>
+
+## ⚙️ Assembly.GetExecutingAssembly() Nedir?
+Assembly.GetExecutingAssembly() metodu, şu anda çalışmakta olan derlemeyi (assembly) temsil eden bir Assembly nesnesi döndürür. Başka bir deyişle, bu metod çağrıldığında, çağrının yapıldığı derleme hakkında bilgi verir.<br><br>
+
+### 📌 Kullanımı:
+using System;<br>
+using System.Reflection;<br>
+<br>
+class Program<br>
+{<br>
+    static void Main()<br>
+    {<br>
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();<br>
+<br>
+        Console.WriteLine("Assembly Adı: " + executingAssembly.GetName().Name);<br>
+        Console.WriteLine("Tam Yol: " + executingAssembly.Location);<br>
+    }<br>
+}<br>
+<br>
+
+### 📌 Çıktı (Örnek olarak)
+Assembly Adı: ConsoleApp1<br>
+Tam Yol: C:\Users\...\bin\Debug\net6.0\ConsoleApp1.dll<br>
+<br>
+
+### 📌 Ne Zaman Kullanılır?
+<b>1️⃣ Assembly hakkında bilgi almak için</b><br>
+Derleme adı, sürümü, kültürü gibi bilgileri almak için kullanılır.<br><br>
+
+<b>2️⃣ Kaynak (Embedded Resource) erişimi için</b><br>
+Eğer projeye gömülü (embedded) dosyalar varsa, bunları almak için kullanılabilir.<br><br>
+
+<b>3️⃣ Çalışan uygulamanın yolunu bulmak için</b><br>
+executingAssembly.Location ile uygulamanın çalıştığı konumu öğrenebilirsiniz.<br><br>
+
+### 📌 Alternatifler:
+
+![image](https://github.com/user-attachments/assets/cadfd427-0b3a-4fe5-9543-1f0635305655)
+<br><br>
+ℹ️ Özetle, Assembly.GetExecutingAssembly() metodu, çalışan kodun içinde bulunduğu derlemeyi temsil eden bilgileri almanızı sağlar.<br><br>
 
